@@ -22,9 +22,7 @@ const Data = () => {
     const add = ()=>{
       setCount(count + 1)
     }
-    let baseUrl = `https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`
-    let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-            
+   
     useEffect(()=>{
 
         const fetchData = async ()=>{  

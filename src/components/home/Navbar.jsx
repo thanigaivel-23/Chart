@@ -18,9 +18,9 @@ const Navbar = () => {
   const NavContent = ()=>{
     return(
       <>
-      <p className='hover:text-gray-500 py-2'><a href="#Line chart">Line chart</a></p>
-      <p className='hover:text-gray-500 py-2'><a href="#Gauge">Gauge</a></p>
-      {/* <p className='hover:text-gray-500 py-2'><a href="#">Contact</a></p> */}
+      <p className='hover:text-gray-500 py-2'><a href="#Line chart">Line Chart</a></p>
+      <p className='hover:text-gray-500 py-2'><a href="#Gauge">Gauge Chart</a></p>
+      <p className='hover:text-gray-500 py-2'><a href="#Bar">Bar Chart</a></p>
       <p className='hover:text-gray-500 py-2'><a href="#"><img className='rounded-full w-14' src={avatar} alt="" /></a></p>
     </>
     )
@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <>
     <main className='flex items-center justify-between px-8 md:px-16 pt-4 sticky top-0 bg-white py-3 border z-20'>
-      <div className='font-bold text-2xl'>StocksX</div>
+      <div className='font-bold text-2xl'><a href="#Line chart">StocksX</a></div>
       <div className='hidden md:flex items-center gap-x-10'>
           <NavContent/>
       </div>
