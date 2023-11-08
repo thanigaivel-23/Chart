@@ -1,9 +1,10 @@
 import React, {useState } from 'react';
 import { Drawer } from 'antd';
-
+import {Link} from 'react-router-dom'
 import { FaBars } from 'react-icons/fa';
-
 import avatar from '../../assets/avatar.jpeg'
+import '../../App.css'
+
 
 const Navbar = () => {
 
@@ -18,10 +19,11 @@ const Navbar = () => {
   const NavContent = ()=>{
     return(
       <>
-      <p className='hover:text-gray-500 py-2'><a href="#Line chart">Line Chart</a></p>
-      <p className='hover:text-gray-500 py-2'><a href="#Gauge">Gauge Chart</a></p>
-      <p className='hover:text-gray-500 py-2'><a href="#Bar">Bar Chart</a></p>
-      <p className='hover:text-gray-500 py-2'><a href="#"><img className='rounded-full w-14' src={avatar} alt="" /></a></p>
+      <p className='hover:text-gray-500 mt-4 mb-4'><a href="#Line chart">Line Chart</a></p>
+      <p className='hover:text-gray-500 my-4'><a href="#Gauge">Gauge Chart</a></p>
+      <p className='hover:text-gray-500 my-4'><a href="#Bar">Bar Chart</a></p>
+      <p className='hover:text-gray-500 my-4'><a href="#"><img className='rounded-full w-14' src={avatar} alt="" /></a></p>
+      <p className=' px-4 py-2 my-4 rounded-md bg-blue-400 hover:bg-blue-500 text-white font-bold' ><Link to='/' >Log out</Link></p>
     </>
     )
   }
