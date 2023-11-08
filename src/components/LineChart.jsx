@@ -3,15 +3,17 @@ import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement,
 import { Line } from 'react-chartjs-2';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
-
+import details from '../data.json'
 
 
 ChartJS.register(
-  ArcElement,CategoryScale,LinearScale,PointElement, LineElement, Title, Tooltip, Legend, Filler
-)
+    ArcElement,CategoryScale,LinearScale,PointElement, LineElement, Title, Tooltip, Legend, Filler
+  )
+  
 
-const Data = () => {
+const LineChart = () => {
 
+    
     const [chartData, setchartData] = useState(false);
 
     const [count, setCount] = useState(4);
@@ -22,47 +24,31 @@ const Data = () => {
     const add = ()=>{
       setCount(count + 1)
     }
-    let baseUrl = `https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`
-    let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-            
-    useEffect(()=>{
+    
 
-        // const fetchData = async ()=>{  
-        //     const {data} = await axios.get(`https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`).catch((e)=>{console.log(e);})
 
-      
-        //     setchartData({
-        //       labels: data.map(item => item.name),
-        //       datasets: [
-        //         {
-        //           label: 'Price',
-        //           data: data.map(item => item.price.replace('$','')),
-        //           fill: true,
-        //           borderColor: 'rgb(255, 99, 132)',
-        //           backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        //         },
-        //       ],
+    useEffect(() => {
 
-        //     })
-        // }
+        setTimeout(() => {
+          setchartData({
+            labels: details.slice(0,count).map(item => item.name),
+            datasets: [
+              {
+                label: 'Revenue',
+                data: details.slice(0,count).map(item => item.price.replace('$','')),
+                fill: true,
+                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+              },
+            ],
 
-        setchartData({
-          labels: data.map(item => item.name),
-          datasets: [
-            {
-              label: 'Price',
-              data: data.map(item => item.price.replace('$','')),
-              fill: true,
-              borderColor: 'rgb(255, 99, 132)',
-              backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            },
-          ],
+          })
+         
 
-        })
+        }, 1000)
+      }, [count,setCount])
 
-        fetchData();
-        
-    },[setCount,count])
+
 
   return (
     <>
@@ -97,7 +83,7 @@ const Data = () => {
                 }} 
               data={chartData} 
             />
-          ): <Spin size='large' indicator={ <LoadingOutlined/>} Spin/>
+          ): <Spin size='large' indicator={ <LoadingOutlined/>} />
         }
       </div>
     </div>
@@ -105,4 +91,4 @@ const Data = () => {
   )
 }
 
-export default Data
+export default LineChart
