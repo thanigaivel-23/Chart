@@ -13,7 +13,7 @@ ChartJS.register(
 
 const Data = () => {
 
-    const [chartData, setchartData] = useState({});
+    const [chartData, setchartData] = useState(false);
     const [count, setCount] = useState(4);
 
     const less = ()=>{
@@ -26,7 +26,6 @@ const Data = () => {
         const fetchData = async ()=>{  
             const {data} = await axios.get(`https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`).catch((e)=>{console.log(e);})
           
-          //  {data?data<Spin size='large' indicator={ <LoadingOutlined/>} spin/>}
             setchartData({
               labels: data.map(item => item.name),
               datasets: [
@@ -57,10 +56,12 @@ const Data = () => {
         <button className='border px-3 py-1 text-sm md:text-xl font-bold' onClick={add}>+</button>
       
     </div>
+    
+
     <div className="md:flex justify-center">
       <div className='  md:w-[70%] md:h-auto '>
         {
-          chartData && chartData?.datasets && (
+          chartData?chartData && chartData?.datasets && (
             <Line 
               options={ {
                 responsive: true,
@@ -74,9 +75,9 @@ const Data = () => {
                     },
                   },
                 }} 
-              data={chartData?chartData:<Spin size='large' indicator={ <LoadingOutlined/>} spin/>} 
+              data={chartData} 
             />
-          )
+          ): <Spin size='large' indicator={ <LoadingOutlined/>} spin/>
         }
       </div>
     </div>

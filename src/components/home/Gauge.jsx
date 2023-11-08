@@ -8,7 +8,7 @@ const Gauge = () => {
 
     const api = {
             key: '81349bc105b014e2e05372ebd1fcf7bc',
-            base: 'http://api.openweathermap.org/data/2.5/'
+            base: 'https://api.openweathermap.org/data/2.5/'
     }
     const [loading, setLoading] = useState(false)
     const [search, setSearch] = useState('');
