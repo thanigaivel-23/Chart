@@ -77,7 +77,7 @@ const Data = () => {
                 }} 
               data={chartData} 
             />
-          ): <Spin size='large' indicator={ <LoadingOutlined/>} spin/>
+          ): <Spin size='large' indicator={ <LoadingOutlined/>} Spin/>
         }
       </div>
     </div>
