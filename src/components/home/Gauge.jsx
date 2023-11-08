@@ -24,7 +24,6 @@ const Gauge = () => {
                 .then((result) => {
                     setWeather(result);
       });
-      setTimeout(()=>{setLoading(false)},5000)
     }
 
         
@@ -58,7 +57,7 @@ const Gauge = () => {
         <div className='ml-5  md:ml-14'>
             <p className='font-bold text-lg md:text-2xl  md:mt-10'>Weather checker</p>
           <input
-          className='bg-slate-200 outline-none focus:border focus:border-blue-400 h-12'
+          className='bg-slate-200 outline-none focus:border pl-2 focus:border-blue-400 h-12'
             type="text"
             placeholder="Enter city/town..."
             onChange={(e) => setSearch(e.target.value)}
@@ -71,8 +70,8 @@ const Gauge = () => {
         {typeof weather.main !== "undefined" ? (
           <div className=' flex gap-x-3 mt-4 ml-5  md:ml-14'>
             {/* Location  */}
-            <p>{weather.name}</p>
-            {loading &&  <Spin size='large' indicator={ <LoadingOutlined/>} spin/> }
+            <p>{weather.name?weather.name: loading?<Spin size='large' indicator={ <LoadingOutlined/>} spin/> : ''}</p>
+
 
             {/* Temperature Celsius  */}
             <p>{weather.main.temp}°C</p>

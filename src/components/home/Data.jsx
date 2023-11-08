@@ -2,6 +2,9 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { Line } from 'react-chartjs-2';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
+
 
 
 ChartJS.register(
@@ -23,7 +26,7 @@ const Data = () => {
         const fetchData = async ()=>{  
             const {data} = await axios.get(`https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`).catch((e)=>{console.log(e);})
           
-           
+          //  {data?data<Spin size='large' indicator={ <LoadingOutlined/>} spin/>}
             setchartData({
               labels: data.map(item => item.name),
               datasets: [
@@ -71,7 +74,7 @@ const Data = () => {
                     },
                   },
                 }} 
-              data={chartData} 
+              data={chartData?chartData:<Spin size='large' indicator={ <LoadingOutlined/>} spin/>} 
             />
           )
         }
