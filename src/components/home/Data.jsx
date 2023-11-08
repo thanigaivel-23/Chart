@@ -24,7 +24,7 @@ const Data = () => {
     }
     useEffect(()=>{
         const fetchData = async ()=>{  
-            const {data} = await axios.get(`https://cors-anywhere.herokuapp.com/https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`).catch((e)=>{console.log(e);})
+            const {data} = await axios.get(`https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`).catch((e)=>{console.log(e);})
           
             setchartData({
               labels: data.map(item => item.name),
