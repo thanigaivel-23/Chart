@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement,
 import { Line } from 'react-chartjs-2';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
-
+import axios from 'axios';
 
 
 ChartJS.register(
@@ -27,38 +27,24 @@ const Data = () => {
             
     useEffect(()=>{
 
-        // const fetchData = async ()=>{  
-        //     const {data} = await axios.get(`https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`).catch((e)=>{console.log(e);})
+        const fetchData = async ()=>{  
+            const {data} = await axios.get(`https://hub.dummyapis.com/products?noofRecords=${count}&idStarts=1001&currency=usd`).catch((e)=>{console.log(e);})
 
       
-        //     setchartData({
-        //       labels: data.map(item => item.name),
-        //       datasets: [
-        //         {
-        //           label: 'Price',
-        //           data: data.map(item => item.price.replace('$','')),
-        //           fill: true,
-        //           borderColor: 'rgb(255, 99, 132)',
-        //           backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        //         },
-        //       ],
+            setchartData({
+              labels: data.map(item => item.name),
+              datasets: [
+                {
+                  label: 'Price',
+                  data: data.map(item => item.price.replace('$','')),
+                  fill: true,
+                  borderColor: 'rgb(255, 99, 132)',
+                  backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                },
+              ],
 
-        //     })
-        // }
-
-        setchartData({
-          labels: data.map(item => item.name),
-          datasets: [
-            {
-              label: 'Price',
-              data: data.map(item => item.price.replace('$','')),
-              fill: true,
-              borderColor: 'rgb(255, 99, 132)',
-              backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            },
-          ],
-
-        })
+            })
+        }
 
         fetchData();
         
@@ -79,7 +65,7 @@ const Data = () => {
     
 
     <div className="md:flex justify-center">
-      <div className='  md:w-[70%] md:h-auto '>
+      <div className='  md:w-[60%] md:h-auto '>
         {
           chartData?chartData && chartData?.datasets && (
             <Line 
@@ -97,7 +83,7 @@ const Data = () => {
                 }} 
               data={chartData} 
             />
-          ): <Spin size='large' indicator={ <LoadingOutlined/>} Spin/>
+          ): <Spin size='large' indicator={ <LoadingOutlined/>} />
         }
       </div>
     </div>

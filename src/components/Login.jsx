@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     <>
-    <main className=' flex  md:pt-24 lg:pt-16 h-screen border bg-slate-50'>
+    <main className=' flex  pt-24 lg:pt-16  '>
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
         <div className='hidden md:block w-[40%] md:ml-14 lg:ml-24'><img  src={logImg} alt="" /></div>

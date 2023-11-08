@@ -27,7 +27,7 @@ const Navbar = () => {
   }
   return (
     <>
-    <main className='flex items-center justify-between px-8 md:px-16 pt-4 sticky top-0 bg-white py-3 border'>
+    <main className='flex items-center justify-between px-8 md:px-16 pt-4 sticky top-0 bg-white py-3 border z-20'>
       <div className='font-bold text-2xl'>StocksX</div>
       <div className='hidden md:flex items-center gap-x-10'>
           <NavContent/>
